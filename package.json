@@ -1,9 +1,9 @@
 {
-  "name": "comp397-w2020-lesson6c",
+  "name": "comp397-w2020-Test",
   "version": "1.0.0",
-  "description": "demo for Lesson 6",
+  "description": "Midterm",
   "main": "game.js",
-  "author": "Tom Tsiliopoulos",
+  "author": "Thanh Lam Pho",
   "license": "MIT",
   "dependencies": {
     "createjs": "^1.0.1",

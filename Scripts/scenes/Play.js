@@ -27,6 +27,7 @@ var scenes;
         // PUBLIC METHODS
         //initialize and instatiate
         Play.prototype.Start = function () {
+            //background
             this.background = new createjs.Bitmap(config.Game.ASSETS.getResult("background"));
             this.addChild(this.background);
             //label section
@@ -42,7 +43,6 @@ var scenes;
         Play.prototype.Update = function () {
         };
         Play.prototype.Main = function () {
-            //background 1400x790
             var _this = this;
             // Button and number result section
             this.addChild(this.roll);
@@ -51,27 +51,29 @@ var scenes;
             //dice section
             this.addChild(this.dice1);
             this.addChild(this.dice2);
+            // section for spinning
             this.roll.on("click", function () {
                 var outCome = [1, 1];
-                for (var spin = 0; spin < 300; spin++) {
-                    for (var spin_1 = 0; spin_1 < 2; spin_1++) {
+                for (var spin2 = 0; spin2 < 5000; spin2++) {
+                    for (var spin = 0; spin < 2; spin++) {
                         var result = Math.floor((Math.random() * 6) + 1);
+                        //assign result
                         switch (result) {
                             case 1:
-                                outCome[spin_1] = 1;
+                                outCome[spin] = 1;
                                 break;
                             case 2:
-                                outCome[spin_1] = 2;
+                                outCome[spin] = 2;
                                 break;
                             case 3:
-                                outCome[spin_1] = 3;
+                                outCome[spin] = 3;
                                 break;
                             case 4:
-                                outCome[spin_1] = 4;
+                                outCome[spin] = 4;
                             case 5:
-                                outCome[spin_1] = 5;
+                                outCome[spin] = 5;
                             case 6:
-                                outCome[spin_1] = 6;
+                                outCome[spin] = 6;
                         }
                     }
                 }
@@ -84,7 +86,6 @@ var scenes;
                 _this.dice2 = new objects.Button(config.Game.ASSETS.getResult("dice" + outCome[1].toString()), 430, 200, true);
                 _this.addChild(_this.dice2);
             });
-            //function
         };
         return Play;
     }(objects.Scene));

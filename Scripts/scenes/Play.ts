@@ -38,6 +38,7 @@ private expand:objects.Button;
         //initialize and instatiate
         public Start(): void 
         {  
+            //background
             this.background= new createjs.Bitmap(config.Game.ASSETS.getResult("background"));
             this.addChild(this.background);
             //label section
@@ -61,7 +62,6 @@ private expand:objects.Button;
         
         public Main(): void 
         {
-              //background 1400x790
         
        // Button and number result section
       this.addChild(this.roll);
@@ -72,15 +72,15 @@ private expand:objects.Button;
         this.addChild(this.dice1);
        this.addChild(this.dice2);
       
-    
+            // section for spinning
        this.roll.on("click", () =>{
         let outCome =[1,1];
         
-         for (let spin = 0; spin < 300; spin++) {
+         for (let spin2 = 0; spin2 < 5000; spin2++) {
         for (let spin = 0; spin < 2; spin++) {
             let result = Math.floor((Math.random() * 6) + 1);
 
-            
+            //assign result
             switch (result) {
                 case 1:  
                    outCome[spin]=1;
@@ -112,7 +112,6 @@ private expand:objects.Button;
        }
     );
         
-        //function
         
 
 
