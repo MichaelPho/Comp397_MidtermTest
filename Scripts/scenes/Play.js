@@ -16,6 +16,7 @@ var scenes;
 (function (scenes) {
     var Play = /** @class */ (function (_super) {
         __extends(Play, _super);
+        //sound 
         // PUBLIC PROPERTIES
         // CONSTRUCTOR
         function Play() {
@@ -51,8 +52,10 @@ var scenes;
             //dice section
             this.addChild(this.dice1);
             this.addChild(this.dice2);
-            // section for spinning
+            createjs.Sound.alternateExtensions = ["mp3"];
+            createjs.Sound.registerSound({ src: "./Assets/audio/boat.mp3", id: "sound" });
             this.roll.on("click", function () {
+                createjs.Sound.play("sound");
                 var outCome = [1, 1];
                 for (var spin2 = 0; spin2 < 5000; spin2++) {
                     for (var spin = 0; spin < 2; spin++) {
@@ -76,15 +79,16 @@ var scenes;
                                 outCome[spin] = 6;
                         }
                     }
+                    _this.result1.setText(outCome[0].toString());
+                    _this.removeChild(_this.dice1);
+                    _this.dice1 = new objects.Button(config.Game.ASSETS.getResult("dice" + outCome[0].toString()), 200, 200, true);
+                    _this.addChild(_this.dice1);
+                    _this.result2.setText(outCome[1].toString());
+                    _this.removeChild(_this.dice2);
+                    _this.dice2 = new objects.Button(config.Game.ASSETS.getResult("dice" + outCome[1].toString()), 430, 200, true);
+                    _this.addChild(_this.dice2);
                 }
-                _this.result1.setText(outCome[0].toString());
-                _this.removeChild(_this.dice1);
-                _this.dice1 = new objects.Button(config.Game.ASSETS.getResult("dice" + outCome[0].toString()), 200, 200, true);
-                _this.addChild(_this.dice1);
-                _this.result2.setText(outCome[1].toString());
-                _this.removeChild(_this.dice2);
-                _this.dice2 = new objects.Button(config.Game.ASSETS.getResult("dice" + outCome[1].toString()), 430, 200, true);
-                _this.addChild(_this.dice2);
+                createjs.Sound.stop();
             });
         };
         return Play;

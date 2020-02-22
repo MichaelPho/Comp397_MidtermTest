@@ -21,6 +21,10 @@ private dice2:objects.Button;
 //start with 2 button
 private roll:objects.Button;
 private expand:objects.Button;
+
+
+//sound 
+
         // PUBLIC PROPERTIES
 
         // CONSTRUCTOR
@@ -71,9 +75,11 @@ private expand:objects.Button;
         //dice section
         this.addChild(this.dice1);
        this.addChild(this.dice2);
-      
-            // section for spinning
+   
+       createjs.Sound.alternateExtensions = ["mp3"];
+       createjs.Sound.registerSound({src:"./Assets/audio/boat.mp3", id:"sound"});
        this.roll.on("click", () =>{
+        createjs.Sound.play("sound");
         let outCome =[1,1];
         
          for (let spin2 = 0; spin2 < 5000; spin2++) {
@@ -98,8 +104,6 @@ private expand:objects.Button;
                 case 6: 
                 outCome[spin]=6;
                 }}
-            }
-            
                 this.result1.setText(outCome[0].toString());
                 this.removeChild(this.dice1);
                 this.dice1= new objects.Button(config.Game.ASSETS.getResult("dice"+outCome[0].toString()),200,200,true);
@@ -109,6 +113,9 @@ private expand:objects.Button;
                 this.removeChild(this.dice2);
                 this.dice2= new objects.Button(config.Game.ASSETS.getResult("dice"+outCome[1].toString()),430,200,true);
                 this.addChild(this.dice2);
+            }
+            
+            createjs.Sound.stop();
        }
     );
         
@@ -116,5 +123,6 @@ private expand:objects.Button;
 
 
     }
+    
     }
 }
