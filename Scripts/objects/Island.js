@@ -14,39 +14,36 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var objects;
 (function (objects) {
-    var Ocean = /** @class */ (function (_super) {
-        __extends(Ocean, _super);
-        // PUBLIC PROPERTIES
-        // CONSTRUCTOR
-        function Ocean() {
-            var _this = _super.call(this, config.Game.ASSETS.getResult("ocean"), new objects.Vector2(), true) || this;
+    var Island = /** @class */ (function (_super) {
+        __extends(Island, _super);
+        function Island() {
+            var _this = _super.call(this, config.Game.ASSETS.getResult("island"), new objects.Vector2(), true) || this;
             _this.Start();
             return _this;
         }
-        // PRIVATE METHODS
-        Ocean.prototype._checkBounds = function () {
-            if (this.y >= 0) {
-                this.Reset();
-            }
-        };
-        Ocean.prototype._move = function () {
+        Island.prototype._move = function () {
             this.position = objects.Vector2.add(this.position, this.velocity);
         };
+        Island.prototype._checkBounds = function () {
+            if (this.position.y > config.Game.SCREEN_HEIGHT + this.height) {
+                this.Reset;
+            }
+        };
         // PUBLIC METHODS
-        Ocean.prototype.Start = function () {
+        Island.prototype.Start = function () {
             this._verticalSpeed = 5; // 5 px per frame
             this.velocity = new objects.Vector2(0, this._verticalSpeed);
             this.Reset();
         };
-        Ocean.prototype.Update = function () {
+        Island.prototype.Update = function () {
             this._move();
             this._checkBounds();
         };
-        Ocean.prototype.Reset = function () {
+        Island.prototype.Reset = function () {
             this.position = new objects.Vector2(0, -960);
         };
-        return Ocean;
+        return Island;
     }(objects.GameObject));
-    objects.Ocean = Ocean;
+    objects.Island = Island;
 })(objects || (objects = {}));
-//# sourceMappingURL=Ocean.js.map
+//# sourceMappingURL=Island.js.map

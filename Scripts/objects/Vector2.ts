@@ -64,7 +64,9 @@ module objects
         }
 
         // CONSTRUCTOR
-        constructor(x: number = 0, y:number = 0, displayObject?: createjs.DisplayObject)
+        constructor(x: number, y:number, displayObject?: createjs.DisplayObject)
+        constructor(coordinates?: number[])
+        constructor(first: number[] | number =0  , second : number =0,third?:createjs.DisplayObject)
         {
             // Initialize member variables
             this._x = 0;
@@ -72,15 +74,27 @@ module objects
             this._magnitude = 0;
             this._sqrMagnitude = 0;
 
-            if (displayObject != undefined)
+            if (third != undefined)
             {
-                this._displayObject = displayObject;
+                this._displayObject = third;
             }
 
-            // set x and y
-            this.x = x;
-            this.y = y;
+            // set x and y array
+            if(first instanceof Array){
+                this.x = first[0];
+                this.y = first[1];
+            }
+            // set x and y number
+            else if(typeof first =="number"){
+            this.x = first;
+            this.y = second;}
+            else
+            {
+                this.x = first;
+            this.y = second;
+            }
         }
+        
 
         // PRIVATE METHODS
         private _computeSqrMagnitude():number

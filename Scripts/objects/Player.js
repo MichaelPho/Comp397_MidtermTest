@@ -20,7 +20,7 @@ var objects;
         // PUBLIC PROPERTIES
         // CONSTRUCTOR
         function Player() {
-            var _this = _super.call(this) || this;
+            var _this = _super.call(this, config.Game.ASSETS.getResult("ocean"), new objects.Vector2(), true) || this;
             _this.Start();
             return _this;
         }

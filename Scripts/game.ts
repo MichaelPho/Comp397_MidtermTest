@@ -31,6 +31,7 @@ let Game = (function(){
         {id:"dice6", src:"./Assets/images/6.png"},
         {id:"rollButton", src:"./Assets/images/rollButton.png"},
         {id:"background", src:"./Assets/images/background1.jpg"},
+        {id:"Cloud", src:"./Assets/images/Cloud.jpg"},
 
     ];
 

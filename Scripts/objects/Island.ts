@@ -1,35 +1,27 @@
 module objects
 {
-    export class Ocean extends GameObject
-    {
-        // PRIVATE INSTANCE MEMBERS
-        private _verticalSpeed?:number;
+    export class Island extends GameObject{
+        private _verticalSpeed: number;
 
-        // PUBLIC PROPERTIES
 
-        // CONSTRUCTOR
-        constructor()
-        {
-            super(config.Game.ASSETS.getResult("ocean"), new Vector2(),true);
-
+        constructor(){
+            super(config.Game.ASSETS.getResult("island"),new Vector2(),true)
             this.Start();
         }
 
-        // PRIVATE METHODS
 
-        protected _checkBounds(): void 
-        {
-            if(this.y >= 0)
-            {
-                this.Reset();
-            }
-        }       
-        
         private _move():void
         {
             this.position = Vector2.add(this.position, this.velocity);
         }
-        
+
+        protected _checkBounds(): void {
+            if(this.position.y > config.Game.SCREEN_HEIGHT + this.height)
+            {
+                this.Reset
+            }
+        }        
+              
         // PUBLIC METHODS
         public Start(): void 
         {
@@ -43,12 +35,10 @@ module objects
             this._move();
             this._checkBounds();
         }
-        
-        public Reset(): void 
-        {
+        public Reset(): void {
             this.position = new Vector2(0, -960);
         }
 
-        
+
     }
 }

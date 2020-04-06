@@ -9,7 +9,7 @@ module objects
         // CONSTRUCTOR
         constructor()
         {
-            super();
+            super(config.Game.ASSETS.getResult("ocean"), new Vector2(),true);
 
             this.Start();
         }
